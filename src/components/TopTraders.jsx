@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography, Avatar, Grid, Box, Button } from '@mui/material';
+import Divider from '@mui/material/Divider';
 
 const TopTraders = ({ topTraders }) => {
   const rankColors = ['#FFD700', '#C0C0C0', '#CD7F32']; // Gold, Silver, Bronze
@@ -24,75 +25,94 @@ const TopTraders = ({ topTraders }) => {
               },
             }}
           >
+            {/* Gradient overlay for the top half */}
             <Box
               sx={{
                 background: `linear-gradient(135deg, ${rankColors[index]} 30%, transparent 100%)`,
-                height: '37%',
+                height: '35%',
                 width: '100%',
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 zIndex: 1,
+                opacity: 0.4,
+                boxShadow: '0px 12px 12px rgba(0, 0, 0, 0.1)',
               }}
             />
+            {/* Rank Text Overlay with Superscript Style */}
             <Box
               sx={{
                 position: 'absolute',
-                top: 10,
-                right: 12,
+                top: 12,
+                right: 16,
                 color: '#081945',
-                fontSize: '3rem',
+                fontSize: '2.5rem',
                 fontWeight: 'bold',
                 zIndex: 2,
+                opacity: 0.4,
+                display: 'flex',
+                alignItems: 'flex-start',
               }}
             >
-              {rankText[index]}
+              {rankText[index][0]}
+              <Typography
+                component="span"
+                sx={{
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  verticalAlign: 'super',
+                  opacity: 0.7,
+                  ml: 0.3,
+                }}
+              >
+                {rankText[index].slice(1)}
+              </Typography>
             </Box>
+            {/* Avatar without square box */}
             <Box
               sx={{
-                background: rankColors[index],
-                p: 2,
-                borderRadius: '50%',
-                width: 80,
-                height: 80,
                 mx: 'auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                mt: 2,
-                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                mt: 4,
                 position: 'relative',
                 zIndex: 3,
               }}
             >
               <Avatar
-                src={`https://randomuser.me/api/portraits/men/${index + 1}.jpg`} // Random avatar URL
+                src={`https://randomuser.me/api/portraits/men/${index + 1}.jpg`}
                 alt={trader.name}
-                sx={{ width: 56, height: 56, border: '2px solid white' }}
+                sx={{ width: 70, height: 70, border: '2px solid white', borderRadius: '50%' }}
               />
             </Box>
-            <CardContent sx={{ paddingTop: 4, position: 'relative', zIndex: 3 }}>
+            <CardContent sx={{ paddingTop: 3, position: 'relative', zIndex: 3 }}>
               <Typography
-                variant="h5"
+                variant="h6"
                 sx={{
                   fontWeight: 'bold',
                   color: '#333',
                   fontFamily: 'Playfair Display, serif',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 1,
                 }}
               >
-                {trader.name}
+                {trader.name} <Avatar sx={{ width: 16, height: 16, bgcolor: '#3f51b5' }}>✓</Avatar>
               </Typography>
               <Typography
                 variant="body2"
                 color="textSecondary"
                 gutterBottom
-                sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '0.9em' }}
+                sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '0.85em' }}
               >
                 {trader.tradingStyle}
               </Typography>
               <Box
                 display="flex"
                 justifyContent="center"
+                alignItems="center"
                 sx={{
                   my: 1,
                   color: '#666',
@@ -102,25 +122,33 @@ const TopTraders = ({ topTraders }) => {
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: 'bold', mr: 1, fontFamily: 'Poppins, sans-serif' }}
+                  sx={{
+                    fontWeight: 'bold',
+                    mr: 1,
+                    fontFamily: 'Poppins, sans-serif',
+                    backgroundColor: '#f1f1f1',
+                    padding: '2px 8px',
+                    borderRadius: '5px',
+                  }}
                 >
-                  {trader.xScore}
-                </Typography>
-                <Typography variant="body1" color="textSecondary">
-                  Xscore
+                  X {trader.xScore}
                 </Typography>
               </Box>
+              {/* Metrics with vertical dividers */}
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'space-around',
-                  mb: 2,
+                  alignItems: 'center',
                   color: '#666',
                   fontFamily: 'Poppins, sans-serif',
+                  mb: 2,
                 }}
               >
                 <Typography variant="body2">Alerts: {trader.alerts}</Typography>
+                <Divider orientation="vertical" flexItem />
                 <Typography variant="body2">Trades: {trader.trades}</Typography>
+                <Divider orientation="vertical" flexItem />
                 <Typography variant="body2">Avg Gain: {trader.avgGain}</Typography>
               </Box>
               <Button
