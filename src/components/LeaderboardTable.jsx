@@ -25,9 +25,10 @@ const LeaderboardTable = ({ traders }) => (
           <TableRow key={index} className="table-row">
             <TableCell className="table-cell rank-cell">{trader.rank}</TableCell>
             <TableCell className="table-cell">
-              <Box className="trader-name">
+              <Box className="trader-name" display="flex" alignItems="center">
                 <Avatar
-                  src={`https://via.placeholder.com/150?text=${trader.name.charAt(0)}`}
+                  src={`https://randomuser.me/api/portraits/men/${index + 1}.jpg`} // Random avatar URL
+                  alt={trader.name}
                   sx={{ mr: 2 }}
                 />
                 <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{trader.name}</Typography>

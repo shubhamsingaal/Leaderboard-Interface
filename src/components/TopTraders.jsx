@@ -24,7 +24,6 @@ const TopTraders = ({ topTraders }) => {
               },
             }}
           >
-            {/* Gradient overlay for the top half */}
             <Box
               sx={{
                 background: `linear-gradient(135deg, ${rankColors[index]} 30%, transparent 100%)`,
@@ -36,8 +35,6 @@ const TopTraders = ({ topTraders }) => {
                 zIndex: 1,
               }}
             />
-
-            {/* Rank Text Overlay */}
             <Box
               sx={{
                 position: 'absolute',
@@ -46,12 +43,11 @@ const TopTraders = ({ topTraders }) => {
                 color: '#081945',
                 fontSize: '3rem',
                 fontWeight: 'bold',
-                zIndex: 2, // Above gradient but below avatar
+                zIndex: 2,
               }}
             >
               {rankText[index]}
             </Box>
-
             <Box
               sx={{
                 background: rankColors[index],
@@ -66,16 +62,15 @@ const TopTraders = ({ topTraders }) => {
                 mt: 2,
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                 position: 'relative',
-                zIndex: 3, // Stack above the gradient and text
+                zIndex: 3,
               }}
             >
               <Avatar
-                src={`https://via.placeholder.com/150?text=${trader.name.charAt(0)}`}
+                src={`https://randomuser.me/api/portraits/men/${index + 1}.jpg`} // Random avatar URL
                 alt={trader.name}
                 sx={{ width: 56, height: 56, border: '2px solid white' }}
               />
             </Box>
-
             <CardContent sx={{ paddingTop: 4, position: 'relative', zIndex: 3 }}>
               <Typography
                 variant="h5"
