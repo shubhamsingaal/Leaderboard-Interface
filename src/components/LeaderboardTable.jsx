@@ -10,16 +10,16 @@ const LeaderboardTable = ({ traders }) => (
     <Table sx={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
       <TableHead>
         <TableRow className="table-header">
-          <TableCell className="table-cell">Rank</TableCell>
-          <TableCell className="table-cell">Name</TableCell>
-          <TableCell className="table-cell">Trading Style</TableCell>
-          <TableCell className="table-cell">Streaks</TableCell>
-          <TableCell className="table-cell">Alerts</TableCell>
-          <TableCell className="table-cell">Trades</TableCell>
-          <TableCell className="table-cell">Avg Gain</TableCell>
-          <TableCell className="table-cell">Xscore</TableCell>
-          <TableCell className="table-cell">Trophies</TableCell>
-          <TableCell className="table-cell" align="right">Action</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Rank</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Name</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Trading Style</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Streaks</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Alerts</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Trades</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Avg Gain</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Xscore</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }}>Trophies</TableCell>
+          <TableCell className="table-cell" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} align="right">Action</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
