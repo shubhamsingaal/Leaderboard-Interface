@@ -26,8 +26,7 @@ const App = () => {
     { label: 'Most Tips Given', value: getMostTipsGiven() },
     { label: 'Most Active', value: getMostActive() },
     { label: 'Longest Streak', value: getLongestStreak() },
-    // Placeholder for "Rank Change" - Add logic when data is available
-    { label: 'Rank Change', value: 'N/A' }
+    { label: 'Rank Change', value: 'N/A' } // Placeholder for "Rank Change"
   ];
 
   return (
@@ -38,15 +37,32 @@ const App = () => {
         fullWidth
         sx={{ mb: 3, borderRadius: 2 }}
       />
-      <Tabs value={0} indicatorColor="primary" textColor="primary" centered sx={{ mb: 3 }}>
+      <Tabs value={0} indicatorColor="primary" textColor="primary" centered sx={{ mb: 3, color:'#FFF7D1', fontWeight: 'bold' }}>
         <Tab label="All" />
         <Tab label="Stocks" />
         <Tab label="Options" />
       </Tabs>
-      <Box>
-        <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
+      <Box sx={{ position: 'relative', mb: 4 }}>
+        {/* Background Text */}
+        <Typography
+          variant="h1"
+          sx={{
+            position: 'relative',
+            top: 10,
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            fontSize: '8rem',
+            color: '#d0d0d0',
+            opacity: 0.4,
+            fontWeight: 'bold',
+            zIndex: -1,
+            userSelect: 'none',
+          }}
+        >
           Champions
         </Typography>
+        
         <TopTraders topTraders={topTraders} />
         <KeyMetrics metrics={metrics} />
         <LeaderboardTable traders={data} />

@@ -8,15 +8,15 @@ const TopTraders = ({ topTraders }) => {
   return (
     <Grid container spacing={3} justifyContent="center" sx={{ mb: 4 }}>
       {topTraders.map((trader, index) => (
-        <Grid item xs={12} sm={4} key={index}>
+        <Grid item xs={12} sm={3.5} key={index}>
           <Card
             sx={{
-              backgroundImage: 'linear-gradient(135deg, #83a4d4, #b6fbff)',
+              backgroundColor: '#FFFFFF',
               textAlign: 'center',
               borderRadius: 3,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               overflow: 'hidden',
-              position: 'relative', // Added for background positioning
+              position: 'relative',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               '&:hover': {
                 transform: 'translateY(-8px)',
@@ -24,16 +24,29 @@ const TopTraders = ({ topTraders }) => {
               },
             }}
           >
-            {/* Background Rank Text */}
+            {/* Gradient overlay for the top half */}
+            <Box
+              sx={{
+                background: `linear-gradient(135deg, ${rankColors[index]} 30%, transparent 100%)`,
+                height: '37%',
+                width: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1,
+              }}
+            />
+
+            {/* Rank Text Overlay */}
             <Box
               sx={{
                 position: 'absolute',
-                top: 10, // Position closer to the top
-                right: 12, // Position closer to the right
-                color: 'rgba(255, 255, 255, 0.2)', // Light, semi-transparent text
-                fontSize: '3rem', // Adjusted font size
+                top: 10,
+                right: 12,
+                color: '#081945',
+                fontSize: '3rem',
                 fontWeight: 'bold',
-                zIndex: 0, // Behind other content
+                zIndex: 2, // Above gradient but below avatar
               }}
             >
               {rankText[index]}
@@ -52,8 +65,8 @@ const TopTraders = ({ topTraders }) => {
                 justifyContent: 'center',
                 mt: 2,
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                position: 'relative', // Stack above background text
-                zIndex: 1,
+                position: 'relative',
+                zIndex: 3, // Stack above the gradient and text
               }}
             >
               <Avatar
@@ -63,7 +76,7 @@ const TopTraders = ({ topTraders }) => {
               />
             </Box>
 
-            <CardContent sx={{ paddingTop: 4, position: 'relative', zIndex: 1 }}>
+            <CardContent sx={{ paddingTop: 4, position: 'relative', zIndex: 3 }}>
               <Typography
                 variant="h5"
                 sx={{
