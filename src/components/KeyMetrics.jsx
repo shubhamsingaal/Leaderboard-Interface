@@ -12,7 +12,7 @@ const KeyMetrics = ({ metrics }) => (
           padding: 2,
           backgroundColor: '#FFFFFF',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-          height: '100px',  // Fixed height for consistent layout
+          height: '80px',  // Fixed height for consistent layout
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -42,9 +42,9 @@ const KeyMetrics = ({ metrics }) => (
                     border: '2px solid #FFFFFF',
                   }}
                 />
-                <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.1em' }}>{metric.label}</Typography>
+                <Typography sx={{ fontWeight: 'bold', fontSize: '1em', color:'grey' }}>{metric.label}</Typography>
               </Box>
-              <Typography variant="h4" color="primary" sx={{ fontWeight: 'bold', fontSize: '1.75em' }}>{metric.value}</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 'bold', fontSize: '1.5em', fontFamily:'poppins' }}>{metric.value}</Typography>
             </Box>
           </CardContent>
         </Card>
