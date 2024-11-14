@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Avatar, Grid, Box, Button } from '@mui/m
 
 const TopTraders = ({ topTraders }) => {
   const rankColors = ['#FFD700', '#C0C0C0', '#CD7F32']; // Gold, Silver, Bronze
+  const rankText = ['1st', '2nd', '3rd'];
 
   return (
     <Grid container spacing={3} justifyContent="center" sx={{ mb: 4 }}>
@@ -15,6 +16,7 @@ const TopTraders = ({ topTraders }) => {
               borderRadius: 3,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               overflow: 'hidden',
+              position: 'relative', // Added for background positioning
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               '&:hover': {
                 transform: 'translateY(-8px)',
@@ -22,6 +24,21 @@ const TopTraders = ({ topTraders }) => {
               },
             }}
           >
+            {/* Background Rank Text */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 10, // Position closer to the top
+                right: 12, // Position closer to the right
+                color: 'rgba(255, 255, 255, 0.2)', // Light, semi-transparent text
+                fontSize: '3rem', // Adjusted font size
+                fontWeight: 'bold',
+                zIndex: 0, // Behind other content
+              }}
+            >
+              {rankText[index]}
+            </Box>
+
             <Box
               sx={{
                 background: rankColors[index],
@@ -35,6 +52,8 @@ const TopTraders = ({ topTraders }) => {
                 justifyContent: 'center',
                 mt: 2,
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                position: 'relative', // Stack above background text
+                zIndex: 1,
               }}
             >
               <Avatar
@@ -43,7 +62,8 @@ const TopTraders = ({ topTraders }) => {
                 sx={{ width: 56, height: 56, border: '2px solid white' }}
               />
             </Box>
-            <CardContent sx={{ paddingTop: 4 }}>
+
+            <CardContent sx={{ paddingTop: 4, position: 'relative', zIndex: 1 }}>
               <Typography
                 variant="h5"
                 sx={{
